@@ -16,6 +16,8 @@ import {
   Box,
   FormErrorMessage,
   Text,
+  InputGroup,
+  InputLeftAddon,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { api_origin } from '../../constraint';
@@ -198,13 +200,16 @@ function EditProfile(props) {
           </FormControl>
           <FormControl isInvalid={isPhoneError} mb={3}>
             <FormLabel fontSize={'sm'}>Nomor Handphone :</FormLabel>
-            <Input
-              name="phone"
-              type="number"
-              value={phone}
-              variant="filled"
-              onChange={onHandleChange}
-            />
+            <InputGroup>
+              <InputLeftAddon children="+62" />
+              <Input
+                name="phone"
+                type="number"
+                value={phone}
+                variant="filled"
+                onChange={onHandleChange}
+              />
+            </InputGroup>
             {isPhoneError && (
               <FormErrorMessage fontSize={'xs'}>
                 Nomor handphone tidak boleh kosong
