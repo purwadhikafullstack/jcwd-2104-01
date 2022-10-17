@@ -51,6 +51,16 @@ function EditProfile(props) {
       if (user.phone == '') {
         setisError(true);
         setisPhoneError(true);
+      } else if (user.phone.length < 9) {
+        setisError(true);
+        setisPhoneError(true);
+      } else if (
+        !user.phone.match(
+          /^(([1-9]{2,4})[ \\-]*)*?[1-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+        )
+      ) {
+        setisError(true);
+        setisPhoneError(true);
       } else {
         setisError(false);
         setisFirstNameError(false);
@@ -212,7 +222,9 @@ function EditProfile(props) {
             </InputGroup>
             {isPhoneError && (
               <FormErrorMessage fontSize={'xs'}>
-                Nomor handphone tidak boleh kosong
+                {user.phone == ''
+                  ? 'Nomor hanphone tidak boleh kosong'
+                  : 'Panjang minimal adalah 10 dan tidak boleh diawal dengan 0'}
               </FormErrorMessage>
             )}
           </FormControl>
