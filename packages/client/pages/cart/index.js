@@ -399,7 +399,7 @@ function Cart(props) {
                     Total Price Product
                   </Text>
                   <Text variant="subtitle-bold" color="#737A8D">
-                    Rp. {priceProduct()}
+                    Rp. {priceProduct().toLocaleString('id')}
                   </Text>
                 </Box>
                 <Box
@@ -416,7 +416,7 @@ function Cart(props) {
                   </Text>
                   {selectedShippingCost && (
                     <Text variant="subtitle-bold" color="#737A8D">
-                      {`Rp ${Number(splitCost[1]).toLocaleString('id')}`}
+                      {`Rp. ${Number(splitCost[1]).toLocaleString('id')}`}
                     </Text>
                   )}
                 </Box>
@@ -427,7 +427,9 @@ function Cart(props) {
                   alignItems="center"
                 >
                   <Text variant="subtitle-bold">Grand Total</Text>
-                  <Text variant="subtitle-bold">Rp. {totalPrice()}</Text>
+                  <Text variant="subtitle-bold">
+                    Rp. {totalPrice().toLocaleString('id')}
+                  </Text>
                 </Box>
                 <Button
                   mt={3}

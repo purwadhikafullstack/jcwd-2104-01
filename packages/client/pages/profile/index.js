@@ -104,7 +104,7 @@ export default function Profile(props) {
         border="2px"
         borderColor="gray.300"
         borderRadius="md"
-        width={452}
+        width="full"
         key={address.addressId}
       >
         <HStack>
@@ -122,9 +122,9 @@ export default function Profile(props) {
             <Text
               marginStart={2}
               fontSize={{ base: 'md', md: 'md' }}
-              fontWeight="medium"
+              fontWeight="normal"
               lineHeight={'6'}
-              width={276}
+              width="full"
             >
               {address.address}
             </Text>
@@ -133,7 +133,7 @@ export default function Profile(props) {
               fontSize={{ base: 'md', md: 'md' }}
               fontWeight="medium"
               lineHeight={'6'}
-              width={250}
+              width="full"
             >
               {address.city_name}, {address.province}
             </Text>
@@ -307,7 +307,7 @@ export default function Profile(props) {
                 fontWeight="medium"
                 lineHeight={'6'}
               >
-                {user.phone}
+                +62 {user.phone}
               </Text>
             </VStack>
           </HStack>
@@ -342,7 +342,7 @@ export default function Profile(props) {
               </Text>
             </Box>
           ) : (
-            <Box overflow="scroll" height="23vh">
+            <Box width="full" overflowY="scroll" height="23vh">
               {renderAddress()}
             </Box>
           )}
