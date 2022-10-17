@@ -18,21 +18,9 @@ const confirmTransaction = async (req, res, next) => {
   try {
     const { transactionId } = req.query;
 
-    // console.log(transactionId);
-
-    // await logHistory.create({
-    //   userId,
-    //   productId: data.dataValues.productId,
-    //   quantity: data.dataValues.quantity,
-    //   totalPrice: updateProduct.dataValues.price * data.dataValues.quantity,
-    //   status: 'out',
-    //   type: 'Penjualan',
-    // });
-
     const findTransaction = await transaction.findAll({
       where: { transactionId },
     });
-    // console.log(findTransaction);
     const getDTData = await detailTransaction.findAndCountAll({
       where: { transactionId },
       attributes: ['dtId', 'productId', 'quantity'],
@@ -66,7 +54,6 @@ const confirmTransaction = async (req, res, next) => {
         },
       ],
     });
-    // console.log(getDTData.rows);
 
     let totalPrice;
     findTransaction.forEach((data) => {
@@ -74,12 +61,9 @@ const confirmTransaction = async (req, res, next) => {
     });
 
     getDTData.rows.map(async (data) => {
-      // console.log(data.dataValues.productId);
-      // console.log(data.dataValues.transaction.dataValues.userId);
       const updateProduct = await product.findOne({
         where: { productId: data.dataValues.productId },
       });
-      // console.log(data);
 
       console.log(updateProduct.dataValues.price);
       await logHistory.create({
