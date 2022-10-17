@@ -224,7 +224,7 @@ function EditProfile(props) {
               <FormErrorMessage fontSize={'xs'}>
                 {user.phone == ''
                   ? 'Nomor hanphone tidak boleh kosong'
-                  : 'Panjang minimal adalah 10 dan tidak boleh diawal dengan 0'}
+                  : 'Panjang minimal adalah 9 dan tidak boleh diawal dengan 0'}
               </FormErrorMessage>
             )}
           </FormControl>
