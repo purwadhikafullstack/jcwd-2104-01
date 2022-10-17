@@ -65,7 +65,6 @@ const confirmTransaction = async (req, res, next) => {
         where: { productId: data.dataValues.productId },
       });
 
-      console.log(updateProduct.dataValues.price);
       await logHistory.create({
         userId: data.dataValues.transaction.dataValues.userId,
         productId: data.dataValues.productId,
@@ -143,7 +142,7 @@ const cancelTransaction = async (req, res, next) => {
     const findTransaction = await transaction.findAll({
       where: { transactionId },
     });
-    // console.log(findTransaction);
+
     const getDTData = await detailTransaction.findAndCountAll({
       where: { transactionId },
       attributes: ['dtId', 'productId', 'quantity'],

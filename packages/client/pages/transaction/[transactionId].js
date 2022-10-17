@@ -20,7 +20,7 @@ import NextLink from 'next/link';
 function Transaction(props) {
   const { data: session } = useSession();
   const { getTransactData } = props.transaction.data;
-  // console.log(getTransactData);
+
   const toast = useToast();
 
   const [transactionList, setTransactionList] = useState([]);
@@ -28,7 +28,7 @@ function Transaction(props) {
   const [statusTrans, setStatusTrans] = useState([]);
 
   const router = useRouter();
-  // console.log(transactionList);
+
   let status;
   getTransactData.forEach((x, i) => {
     status = x.transaction.transactionStatus;
@@ -44,14 +44,14 @@ function Transaction(props) {
     };
     try {
       const { transactionId } = router.query;
-      // console.log(transactionId);
+
       const cancel = await axiosInstance.post(
         `/transactions/cancelTransaction/${transactionId}?transactionId=${transactionId}`,
         {},
         config,
       );
       fetchTransactionList();
-      // console.log(cancel);
+
       if (status == 'Dibatalkan') {
         return toast({
           title: 'Anda perlu memasukan alamat terlebih dahulu',
@@ -72,14 +72,13 @@ function Transaction(props) {
       const updateStatus = await axiosInstance.post(
         `/transactions/confirmTransaction/${transactionId}?transactionId=${transactionId}`,
       );
-      // console.log(updateStatus.data.data.updatedTransaction);
+
       fetchTransactionList();
     } catch (error) {
       console.log(error);
     }
   };
 
-  // console.log(router.query.transactionId);
   useEffect(() => {
     fetchTransactionList();
   }, []);
@@ -108,18 +107,17 @@ function Transaction(props) {
   const fetchTransactionListByAdmin = async () => {
     try {
       const { transactionId } = router.query;
-      // console.log(transactionId);
 
       const get = await axiosInstance.get(
         `/transactions/dataTransactionByAdmin?${transactionId}`,
       );
-      // console.log(get.data.data.getTransactData);
+
       setTransactionListAdmin(get.data.data.getTransactData);
     } catch (error) {
       console.log(error);
     }
   };
-  // console.log(transactionList);
+
   const renderListTransaction = () => {
     return (
       <ListPTransaction
@@ -137,8 +135,6 @@ function Transaction(props) {
         <div>
           <Box
             display={['block', 'block', 'block']}
-            // //   mx={[5, 0, 235]}
-            // w={['40%', '40%', '40%']}
             mb={['100px', '200px', '59px']}
             justifyContent="center"
             mt="66px"

@@ -47,7 +47,6 @@ function ChangePassword(props) {
         setErrorMessage(response.data.message);
       } else {
         router.replace('/');
-        // console.log(response.error.message);
       }
     } catch (error) {
       console.log(error);

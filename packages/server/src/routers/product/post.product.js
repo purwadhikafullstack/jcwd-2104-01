@@ -142,8 +142,6 @@ const postObatRacikan = async (req, res, next) => {
 
         const { productId, price } = newProductStock.dataValues;
 
-        console.log(checkPengeluaranStock[index]);
-
         if (checkPengeluaranStock[index]) {
           await logHistory.create(
             {

@@ -71,7 +71,6 @@ const editProductStock = async (req, res, next) => {
     const { productId, updateStock, defaultStock, totalPrice } = req.body;
 
     const addStock = Number(updateStock) + defaultStock;
-    console.log(addStock);
 
     const result = await sequelize.transaction(async (t) => {
       const resUpdateStock = await product.update(
@@ -229,8 +228,6 @@ const updateStockRacikan = async (req, res, next) => {
         });
 
         const { productId, price } = newProductStock.dataValues;
-
-        console.log(checkPengeluaranStock[index]);
 
         if (checkPengeluaranStock[index]) {
           await logHistory.create(

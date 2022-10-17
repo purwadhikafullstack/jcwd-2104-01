@@ -136,7 +136,6 @@ export default function Laporan(props) {
           page + 1
         }&sorting=${sorting}&order=${order}`,
       );
-      console.log(respons);
       setTransProduct1(respons.data.data.getTransactProduct);
       setTotalPage1(respons.data.data.totalPage1);
     } catch (error) {

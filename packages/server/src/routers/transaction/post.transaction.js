@@ -120,7 +120,6 @@ const createTransaction = async (req, res, next) => {
       });
     });
     findCart.map(async (data) => {
-      // console.log(data);
       const updateProduct = await product.findOne({
         where: { productId: data.dataValues.productId },
       });

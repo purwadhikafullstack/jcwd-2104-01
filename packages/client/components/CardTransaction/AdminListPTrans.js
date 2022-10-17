@@ -23,7 +23,6 @@ const AdminTransactionList = ({ data, address, statusTrans }) => {
       <Flex>
         <Flex gap="1rem" direction={'column'} maxW="600px">
           {data.map((v, i) => {
-            // console.log(v);
             return (
               <div key={i}>
                 <Box

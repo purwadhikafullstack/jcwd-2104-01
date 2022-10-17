@@ -34,7 +34,6 @@ function Cart(props) {
   const [modalKurir, setModalKurir] = useState(false);
   const router = useRouter();
   const [modalAdd, setModalAdd] = useState();
-  console.log(getCart);
 
   const [userAddresses, setUserAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState();

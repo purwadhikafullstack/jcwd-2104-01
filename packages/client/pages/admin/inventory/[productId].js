@@ -167,8 +167,7 @@ export default function DetailStock(props) {
       let tomorrows = setTimeOut.getDate();
       let sekarang = new Date();
       let sekarangs = sekarang.getDate();
-      console.log(`ini todays : ${todays}`);
-      console.log(`ini tomorows : ${tomorrows}`);
+
       return (
         <Tr key={history.historyId}>
           <Td pl="3.7%" fontSize={'15px'} borderRight={'1px'}>
@@ -243,8 +242,7 @@ export default function DetailStock(props) {
       let tomorrows = setTimeOut.getDate();
       let sekarang = new Date();
       let sekarangs = sekarang.getDate();
-      console.log(`ini todays : ${todays}`);
-      console.log(`ini tomorows : ${tomorrows}`);
+
       return (
         <Tr key={history.historyId}>
           <Td pl="3.7%" fontSize={'15px'} borderRight={'1px'}>
