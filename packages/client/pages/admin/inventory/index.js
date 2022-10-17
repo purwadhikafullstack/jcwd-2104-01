@@ -36,8 +36,6 @@ export default function Inventory(props) {
   const [search, setSearch] = useState('');
   const [productList, setProductList] = useState();
 
-  console.log(props.product);
-
   const {
     isOpen: isRacikOpen,
     onOpen: onRacikOpen,

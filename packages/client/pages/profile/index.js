@@ -90,6 +90,13 @@ export default function Profile(props) {
         {},
         config,
       );
+      toast({
+        description: res.data.message,
+        position: 'top',
+        status: 'success',
+        duration: 3000,
+        isClosable: true,
+      });
 
       fetchUserAddresses();
     } catch (error) {

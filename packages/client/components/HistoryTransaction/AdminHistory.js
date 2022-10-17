@@ -21,8 +21,6 @@ import { DeleteIcon, AddIcon, WarningIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
 const AdminTransHistory = ({ data, selected }) => {
-  // console.log(data);
-
   return (
     <div>
       <HStack

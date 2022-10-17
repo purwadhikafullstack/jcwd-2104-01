@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+require('dotenv').config();
+
+const { RAJAONGKIR_URL, RAJAONGKIR_KEY, RAJAONGKIR_HEADERS } = process.env;
 
 //config axios to rajaongkir
-axios.defaults.baseURL = 'https://api.rajaongkir.com/starter';
-axios.defaults.headers.common['key'] = '205258f7c4c0e26bd2a06dbbcabd2ca5';
-axios.defaults.headers.post['Content-Type'] =
-  'application/x-www-form-urlencoded';
+axios.defaults.baseURL = RAJAONGKIR_URL;
+axios.defaults.headers.common['key'] = RAJAONGKIR_KEY;
+axios.defaults.headers.post['Content-Type'] = RAJAONGKIR_HEADERS;
 
 //get province endpoint
 router.get('/provinsi', (req, res) => {

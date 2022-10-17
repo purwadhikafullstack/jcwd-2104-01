@@ -72,7 +72,6 @@ const AddressAndPayment = ({ data, user }) => {
           data1,
           config,
         );
-        // console.log(res);
         router.replace(`/riwayat/`);
       } catch (error) {
         console.log(error);

@@ -32,7 +32,6 @@ function ShippingAddress(props) {
   const [modalEdit, setModalEdit] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
   const [currentAddress, setCurrentAddress] = useState();
-  // console.log(userAddresses);
 
   const toast = useToast();
 

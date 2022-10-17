@@ -18,7 +18,6 @@ import axiosInstance from '../../src/config/api';
 import { api_origin } from '../../constraint';
 
 const AdminTransactionList = ({ data, address, statusTrans }) => {
-  //   console.log(data);
   return (
     <div key={data.dtId}>
       <Flex>

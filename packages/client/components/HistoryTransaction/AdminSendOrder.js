@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import axiosInstance from '../../src/config/api';
 
 const SendTransactionAdmin = ({ data, selected, fetchTransaction }) => {
-  // console.log(data);
   const sendItem = async () => {
     try {
       const confrimOrder = await axiosInstance.post(

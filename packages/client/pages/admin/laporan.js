@@ -53,7 +53,7 @@ export default function Laporan(props) {
       const body = { timeReport: sortItem };
 
       const respons = await axiosInstance.post(`/report/salesReportUser`, body);
-      // console.log(respons);
+
       setSalesItem(respons.data.data);
     } catch (error) {
       console.log(error);
@@ -61,11 +61,10 @@ export default function Laporan(props) {
   };
   const convertItemDataByMonth = () => {
     const { countOrder } = salesItem;
-    // console.log(profitData);
+
     const dataArr = new Array(parseInt(moment().format('MM'))).fill(0);
     let ProductN;
     countOrder?.forEach((val) => {
-      // console.log(val);
       ProductN = val.productId;
       dataArr[val.productId] = val.count;
     });
@@ -75,7 +74,7 @@ export default function Laporan(props) {
         data: dataArr,
       },
     ];
-    // console.log(data);
+
     setCategoryItem(productID);
     setItemSalesCate(data);
   };
@@ -92,7 +91,7 @@ export default function Laporan(props) {
       convertItemDataByMonth();
     }
   }, [salesItem]);
-  // console.log(salesItem);
+
   const saleItemSeries = ItemSalesCate;
   const handleChangeItemSales = (event) => {
     setSortItem(event.target.value);
@@ -111,12 +110,10 @@ export default function Laporan(props) {
     setFormState(event.target.value);
   };
   const onClickOrder = (e) => {
-    // console.log(e.target.value);
     let splitting = e.target.value.split(' ');
-    // console.log(splitting);
+
     setSorting(splitting[0]);
     setOrder(splitting[1]);
-    // setSorting(e.target.value);
   };
   const fetchProductTransaction = async () => {
     try {
@@ -231,7 +228,6 @@ export default function Laporan(props) {
       converProfitDataByMonth();
     }
   }, [profitData]);
-  console.log(profitData);
 
   const converProfitDataByMonth = () => {
     const { SaleTotal } = profitData.data;
@@ -246,7 +242,7 @@ export default function Laporan(props) {
         data: dataArr,
       },
     ];
-    // console.log(data);
+
     setCategoryProfit(Month);
     setProfit(data);
   };
@@ -406,7 +402,6 @@ export async function getServerSideProps(context) {
       },
     );
 
-    console.log(restransactionProduct.data.data.getTransactProduct);
     if (!resGetUser.data.data.isAdmin)
       return { redirect: { destination: '/' } };
 
