@@ -48,7 +48,6 @@ const SendTransactionAdmin = ({ data, selected, fetchTransaction }) => {
             gap="1rem"
             mt="2rem"
             justifyContent={'center'}
-            // width={'100%'}
           >
             <Button size={'xs'} colorScheme={'twitter'} onClick={sendItem}>
               Send Item

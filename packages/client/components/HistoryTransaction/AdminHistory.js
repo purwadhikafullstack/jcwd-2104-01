@@ -13,7 +13,7 @@ import {
   Link,
   Image,
 } from '@chakra-ui/react';
-// import Image from 'next/image';
+
 import { api_origin } from '../../constraint';
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../../src/config/api';

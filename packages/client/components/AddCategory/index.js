@@ -46,7 +46,6 @@ export default function AddCategory(props) {
   const onCancel = () => {
     setCategory({ category: '' });
     setImageSource();
-    // delete category.categoryImages;
   };
 
   return (
@@ -103,7 +102,6 @@ export default function AddCategory(props) {
             <Input
               name="category"
               type="text"
-              // value={category.category}
               variant="filled"
               onChange={onHandleChange}
             />

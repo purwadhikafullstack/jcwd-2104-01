@@ -83,7 +83,6 @@ const AdminProofConfirm = ({ data, fetchTransaction }) => {
             gap="1rem"
             mt="2rem"
             justifyContent={'center'}
-            // width={'100%'}
           >
             <Button
               size={'xs'}

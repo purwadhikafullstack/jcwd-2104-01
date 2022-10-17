@@ -211,7 +211,7 @@ function EditProfile(props) {
           <FormControl isInvalid={isPhoneError} mb={3}>
             <FormLabel fontSize={'sm'}>Nomor Handphone :</FormLabel>
             <InputGroup>
-              <InputLeftAddon children="+62" />
+              <InputLeftAddon>+62</InputLeftAddon>
               <Input
                 name="phone"
                 type="number"

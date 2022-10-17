@@ -43,7 +43,6 @@ export default function Laporan(props) {
   const [totalPage, setTotalPage] = useState(props.totalPage);
   const [totalPage1, setTotalPage1] = useState(props.totalPage1);
 
-  // chart product byProductId
   useEffect(() => {
     fetchSalesItem();
   }, [sortItem]);
@@ -149,7 +148,7 @@ export default function Laporan(props) {
   useEffect(() => {
     fetchProductTransaction();
   }, [page, sorting, order, formState]);
-  //default
+
   useEffect(() => {
     fetchProductTransactiondefault();
   }, [page, sorting, order, formState]);
@@ -212,11 +211,7 @@ export default function Laporan(props) {
       timeReport: sortProfit,
     };
     try {
-      const respons = await axiosInstance.post(
-        `/report/salesTotal`,
-        body,
-        // timeReport: 'Bulanan',
-      );
+      const respons = await axiosInstance.post(`/report/salesTotal`, body);
       setProfitData(respons.data.data);
     } catch (error) {
       console.log(error);
@@ -305,7 +300,6 @@ export default function Laporan(props) {
               borderColor={'black'}
               w="fit-content"
               my={4}
-              // mb={0.5}
               ml={1}
             >
               <option value="totalPrice ASC">Nilai Jual ASC</option>
@@ -322,7 +316,6 @@ export default function Laporan(props) {
               type="date"
               onChange={onHandleChange}
               width={200}
-              // mt={1}
               ml={1}
             />
           </HStack>

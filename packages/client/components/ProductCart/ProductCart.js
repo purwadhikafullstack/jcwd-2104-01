@@ -1,9 +1,7 @@
 import { AddIcon, MinusIcon } from '@chakra-ui/icons';
 import { FcFullTrash } from 'react-icons/fc';
 import {
-  Alert,
   Box,
-  Checkbox,
   Button,
   Grid,
   GridItem,
@@ -12,20 +10,15 @@ import {
   IconButton,
   Img,
   Text,
-  useToast,
 } from '@chakra-ui/react';
-import { Cookies } from 'next/dist/server/web/spec-extension/cookies';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { useRouter } from 'next/router';
+
 import React, { useEffect, useState } from 'react';
-// import { BsFillTrashFill } from 'react-icons/bs';
+
 import axiosInstance from '../../src/config/api';
 import { getSession } from 'next-auth/react';
 import { api_origin } from '../../constraint';
 
 const Cartlist = ({
-  props,
   cartId,
   productImage,
   productName,
@@ -35,7 +28,7 @@ const Cartlist = ({
   unit,
   stock,
   fetchCartList,
-  setChanges,
+
   totalPrice,
 }) => {
   const [selected, setSelected] = useState(false);

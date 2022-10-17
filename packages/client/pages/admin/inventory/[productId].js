@@ -390,7 +390,6 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="5.6%"
                           >
                             Date
                           </Th>
@@ -398,7 +397,6 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="9%"
                           >
                             Product
                           </Th>
@@ -406,7 +404,6 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="2.5%"
                           >
                             Unit
                           </Th>
@@ -414,7 +411,6 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="2.9%"
                           >
                             Quantity
                           </Th>
@@ -422,14 +418,12 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="8.6%"
                           >
                             Type
                           </Th>
                           <Th
                             color="white"
                             fontSize={'15px'}
-                            // px="2.2%"
                             borderRight={'1px'}
                           >
                             Status

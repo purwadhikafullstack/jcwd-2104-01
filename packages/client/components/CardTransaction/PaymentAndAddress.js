@@ -192,21 +192,7 @@ const AddressAndPayment = ({ data, user }) => {
                   >
                     Unggah Bukti Pembayaran
                   </FormLabel>
-                ) : // <FormLabel
-                //   pt="2"
-                //   ml="115px"
-                //   bg="#008DEB"
-                //   width="230px"
-                //   height="40px"
-                //   borderRadius="5px"
-                //   htmlFor="image"
-                //   cursor={'pointer'}
-                //   color="white"
-                //   textAlign={'center'}
-                // >
-                //   Unggah Bukti Pembayaran
-                // </FormLabel>
-                null}
+                ) : null}
 
                 <input
                   style={{ display: 'none' }}

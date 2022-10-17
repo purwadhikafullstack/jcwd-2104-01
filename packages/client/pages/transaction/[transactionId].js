@@ -1,21 +1,10 @@
-import {
-  Alert,
-  Box,
-  useToast,
-  Button,
-  Flex,
-  Stack,
-  Link,
-  Select,
-} from '@chakra-ui/react';
+import { Box, useToast, Button, Flex, Stack, Link } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../src/config/api';
 import { getSession, useSession } from 'next-auth/react';
 import Navbar from '../../components/Navbar';
 import { useRouter } from 'next/router';
 import ListPTransaction from '../../components/CardTransaction/ListPTransaction';
-import AdminListPTrans from '../../components/CardTransaction/AdminListPTrans';
-import NextLink from 'next/link';
 
 function Transaction(props) {
   const { data: session } = useSession();
@@ -173,8 +162,6 @@ function Transaction(props) {
           <Navbar session={session} user={props.user} />
           <Box
             display={['block', 'block', 'block']}
-            // //   mx={[5, 0, 235]}
-            // w={['40%', '40%', '40%']}
             mb={['100px', '200px', '59px']}
             justifyContent="center"
             mt="66px"
@@ -194,7 +181,6 @@ function Transaction(props) {
                 mt="2rem"
                 p={20}
                 justifyContent={'center'}
-                // width={'100%'}
               >
                 {status == 'Dikirim' ? (
                   <Button
@@ -220,7 +206,6 @@ function Transaction(props) {
                     size={'xs'}
                     colorScheme={'twitter'}
                     onClick={CancelOrder}
-                    // isDisabled={status !== buttDis1 }
                   >
                     Cancel Order
                   </Button>
@@ -229,7 +214,6 @@ function Transaction(props) {
                     size={'xs'}
                     colorScheme={'twitter'}
                     onClick={CancelOrder}
-                    // isDisabled={status !== buttDis2}
                   >
                     Cancel Order
                   </Button>
