@@ -22,8 +22,6 @@ export default function ProductDetail({ product, user }) {
   const { data: session } = useSession();
   const [show, setShow] = useState(false);
 
-  console.log(product);
-
   const addToCart = async () => {
     const session = await getSession();
     if (!session)
@@ -37,7 +35,7 @@ export default function ProductDetail({ product, user }) {
 
     const userId = session.user.userId;
     const { accessToken } = session.user;
-    // console.log(token);
+
     const config = {
       headers: { Authorization: `Bearer ${accessToken}` },
     };
@@ -46,7 +44,7 @@ export default function ProductDetail({ product, user }) {
       productId: product.productId,
     };
     const res = await axiosInstance.post('/carts/add-to-cart', body, config);
-    // console.log(res);
+
     toast({
       description: res.data.message,
       position: 'top',

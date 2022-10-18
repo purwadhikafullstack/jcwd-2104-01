@@ -19,13 +19,12 @@ const allTransactionProduct = async (req, res, next) => {
       sorting = 'createdAt',
       order = 'ASC',
     } = req.query;
-    // console.log(createdAt);
+
     const limit = Number(pageSize);
     const offset = (Number(page) - 1) * Number(pageSize);
-    // var startdate = moment(createdAt).format('DD-MM-YYYY');
+
     var endDate = new Date(moment(createdAt).add(1, 'M').format('MM-DD-YYYY'));
 
-    // console.log(endDate);
     const getLogHistory = await logHistory.findAndCountAll({
       order: Sequelize.literal(`${sorting} ${order}`),
       where: {
@@ -86,7 +85,6 @@ const allTransactionProductNorm = async (req, res, next) => {
     const limit = Number(pageSize);
     const offset = (Number(page) - 1) * Number(pageSize);
 
-    // console.log(endDate);
     const getLogHistory = await logHistory.findAndCountAll({
       order: Sequelize.literal(`${sorting} ${order}`),
       where: {

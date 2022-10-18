@@ -21,7 +21,7 @@ const allTransactionByAdmin = async (req, res, next) => {
       sorting = 'transactionId',
       order = 'ASC',
     } = req.query;
-    // console.log(req.query)
+
     var StatusTransaction;
     const limit = Number(pageSize);
     const offset = (Number(page) - 1) * Number(pageSize);
@@ -53,7 +53,7 @@ const allTransactionByAdmin = async (req, res, next) => {
         offset,
         limit,
       });
-      // console.log(restransactionStatus.rows);
+
       res.send({
         status: 'success',
         message: 'Fetch Transaction',
@@ -213,8 +213,7 @@ const getTransactionSelected = async (req, res, next) => {
       sorting = 'transactionId',
       order = 'ASC',
     } = req.query;
-    // createdAt
-    // console.log(createdAt);
+
     if (createdAt == 'undefined') {
       var waktu = moment().format('YYYY-MM-DD HH:mm:ss');
     } else {
@@ -226,7 +225,7 @@ const getTransactionSelected = async (req, res, next) => {
     var StatusTransaction;
     var endDate = new Date(moment(waktu).add(1, 'M').format('MM-DD-YYYY'));
     const limit = Number(pageSize);
-    console.log(endDate);
+
     const offset = (Number(page) - 1) * Number(pageSize);
 
     const getSelectData = async (StatusTransaction) => {
@@ -252,7 +251,7 @@ const getTransactionSelected = async (req, res, next) => {
         },
       });
     };
-    console.log('tes');
+
     const getAlltData = async () => {
       const restransactionStatus = await transaction.findAndCountAll({
         order: Sequelize.literal(`${sorting} ${order}`),

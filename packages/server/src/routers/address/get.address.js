@@ -51,9 +51,7 @@ const getUserAddressTransaction = async (req, res, next) => {
     const resGetUserAddressTransaction = await Address.findAll({
       where: { userId, addressId },
     });
-    // if (!resGetUserMainAddress)
-    //   throw { message: 'Alamat utama tidak ditemukan' };
-    console.log(resGetUserAddressTransaction);
+
     res.send({
       status: 'Success',
       message: 'Success get user addresses',

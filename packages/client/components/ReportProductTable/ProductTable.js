@@ -19,7 +19,6 @@ const ProductTable = ({ columns, data, isLoading, key }) => {
       {
         columns: columnData,
         data: rowData,
-        //  manualPagination: true,
       },
       usePagination,
     );

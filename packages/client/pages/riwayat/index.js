@@ -25,7 +25,6 @@ import ReactPaginate from 'react-paginate';
 import { api_origin } from '../../constraint';
 
 function Riwayat(props) {
-  // console.log(props.totalPage);
   const { data: session } = useSession();
   const [user, setUser] = useState(props.user);
   const [selected, setSelected] = useState(0);
@@ -39,7 +38,6 @@ function Riwayat(props) {
   const [formState, setFormState] = useState();
   const [totalPage, setTotalPage] = useState(props.totalPage1);
   const [totalPage1, setTotalPage1] = useState(props.totalPage);
-  console.log(formState);
 
   const handlePageClick = (e) => {
     setPage(e.selected);
@@ -50,12 +48,10 @@ function Riwayat(props) {
   };
 
   const onClickOrder = (e) => {
-    // console.log(e.target.value);
     let splitting = e.target.value.split(' ');
-    // console.log(splitting);
+
     setSorting(splitting[0]);
     setOrder(splitting[1]);
-    // setSorting(e.target.value);
   };
 
   const fetchTransaction = async () => {
@@ -63,22 +59,20 @@ function Riwayat(props) {
       const session = await getSession();
       const userId = session.user.userId;
       const { accessToken } = session.user;
-      //   console.log(token);
+
       const config = {
         headers: { Authorization: `Bearer ${accessToken}` },
       };
-      //   console.log(config);
+
       const res = await axiosInstance.get(
         `/transactions/historyTransaction?selected=${selected}&page=${
           page + 1
         }&sorting=${sorting}&order=${order}&createdAt=${formState}`,
         config,
       );
-      // console.log(res.data.data.restransactionStatus);
+
       setData(res.data.data.restransactionStatus);
       setTotalPage(res.data.data.totalPage);
-
-      //   console.log(res.data.data.responseTransaction);
     } catch (error) {
       console.log(error);
     }
@@ -88,23 +82,20 @@ function Riwayat(props) {
       const session = await getSession();
       const userId = session.user.userId;
       const { accessToken } = session.user;
-      //   console.log(token);
+
       const config = {
         headers: { Authorization: `Bearer ${accessToken}` },
       };
-      //   console.log(config);
+
       const res = await axiosInstance.get(
         `/transactions/historyTransactionNorm?selected=${selected}&page=${
           page + 1
         }&sorting=${sorting}&order=${order}`,
         config,
       );
-      // console.log(res);
-      // console.log(res.data.data.restransactionStatus);
+
       setData1(res.data.data.restransactionStatus);
       setTotalPage1(res.data.data.totalPage1);
-
-      //   console.log(res.data.data.responseTransaction);
     } catch (error) {
       console.log(error);
     }
@@ -118,13 +109,11 @@ function Riwayat(props) {
 
   function selectedStatus() {
     return data?.map((x, i) => {
-      console.log(x);
       return <History data={x} selected={selected} key={i} />;
     });
   }
   function selectedStatus1() {
     return data1?.map((y, i) => {
-      // console.log(y);
       return <History data={y} selected={selected} key={i} />;
     });
   }
@@ -289,20 +278,18 @@ export default Riwayat;
 export async function getServerSideProps(context) {
   try {
     const session = await getSession({ req: context.req });
-    // console.log(session);
-    if (!session) return { redirect: { destination: '/' } };
 
-    // console.log(session);
+    if (!session) return { redirect: { destination: '/' } };
 
     const userId = session.user.userId;
     const accessToken = session.user.accessToken;
-    // console.log(transactionId);
+
     const config = {
       headers: { Authorization: `Bearer ${accessToken}` },
     };
-    // console.log(config);
+
     const resGetUser = await axiosInstance.get(`/users/${userId}`, config);
-    // console.log(resGetUser.data.data);
+
     const restransactionUser = await axiosInstance.get(
       `/transactions/historyTransactionNorm`,
       config,

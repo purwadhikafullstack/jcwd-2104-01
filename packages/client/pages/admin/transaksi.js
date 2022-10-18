@@ -25,7 +25,6 @@ import styles from './Product.module.css';
 import ReactPaginate from 'react-paginate';
 
 export default function Transaksi(props) {
-  // console.log(props.totalPage);
   const [selected, setSelected] = useState(0);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(0);
@@ -36,12 +35,10 @@ export default function Transaksi(props) {
     setPage(e.selected);
   };
   const onClickOrder = (e) => {
-    // console.log(e.target.value);
     let splitting = e.target.value.split(' ');
-    // console.log(splitting);
+
     setSorting(splitting[0]);
     setOrder(splitting[1]);
-    // setSorting(e.target.value);
   };
   useEffect(() => {
     fetchTransaction();
@@ -54,10 +51,8 @@ export default function Transaksi(props) {
           page + 1
         }&sorting=${sorting}&order=${order}`,
       );
-      // console.log(res.data.data.restransactionStatus);
-      setData(res.data.data.restransactionStatus);
 
-      //   console.log(res.data.data.responseTransaction);
+      setData(res.data.data.restransactionStatus);
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +60,6 @@ export default function Transaksi(props) {
 
   function selectedStatus() {
     return data?.map((x, i) => {
-      // console.log(x);
       return <AdminHistory data={x} selected={selected} key={i} />;
     });
   }
@@ -179,27 +173,24 @@ export default function Transaksi(props) {
 export async function getServerSideProps(context) {
   try {
     const session = await getSession({ req: context.req });
-    // console.log(session);
-    if (!session) return { redirect: { destination: '/' } };
 
-    // console.log(session);
+    if (!session) return { redirect: { destination: '/' } };
 
     const userId = session.user.userId;
     const accessToken = session.user.accessToken;
-    // console.log(transactionId);
+
     const config = {
       headers: { Authorization: `Bearer ${accessToken}` },
     };
-    // console.log(config);
+
     const resGetUser = await axiosInstance.get(`/users/${userId}`, config);
-    // console.log(resGetUser.data.data);
+
     if (!resGetUser.data.data.isAdmin)
       return { redirect: { destination: '/' } };
     const restransactionUser = await axiosInstance.get(
       `/transactions/allTransByAdmin`,
       { params: context.query },
     );
-    // console.log(restransactionUser.data);
 
     return {
       props: {

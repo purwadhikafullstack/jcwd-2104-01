@@ -14,7 +14,6 @@ function ResendEmail(props) {
       email: props.user.email,
       userId: props.user.userId,
     };
-    console.log(body);
 
     const res = await axiosInstance.post('/users/verification', body);
 

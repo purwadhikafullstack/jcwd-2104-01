@@ -106,7 +106,6 @@ const registerUserHandler = async (req, res, next) => {
 const resendEmailVerification = async (req, res, next) => {
   try {
     const { email, userId } = req.body;
-    console.log(req.body);
 
     // create new token
     const token = createToken({ userId });
@@ -136,7 +135,6 @@ const loginUserController = async (req, res, next) => {
     const resGetLoginUser = await user.findOne({
       where: { email: email },
     });
-    // console.log(resGetLoginUser);
 
     if (!resGetLoginUser) {
       throw {
@@ -145,7 +143,7 @@ const loginUserController = async (req, res, next) => {
       };
     }
     const userPass = resGetLoginUser.dataValues;
-    // console.log(userPass);
+
     const validatePassword = passwordValidator(password);
     if (validatePassword)
       throw {

@@ -18,13 +18,11 @@ import axiosInstance from '../../src/config/api';
 import { api_origin } from '../../constraint';
 
 const AdminTransactionList = ({ data, address, statusTrans }) => {
-  //   console.log(data);
   return (
     <div key={data.dtId}>
       <Flex>
         <Flex gap="1rem" direction={'column'} maxW="600px">
           {data.map((v, i) => {
-            // console.log(v);
             return (
               <div key={i}>
                 <Box

@@ -66,7 +66,6 @@ const ProfitChart = ({
                   })}
                 </Select>
               </FormControl>
-              {/* // ) : undefined} */}
             </Stack>
           </HStack>
         </Box>

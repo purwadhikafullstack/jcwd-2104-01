@@ -16,6 +16,8 @@ import {
   Box,
   FormErrorMessage,
   Text,
+  InputGroup,
+  InputLeftAddon,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { api_origin } from '../../constraint';
@@ -47,6 +49,16 @@ function EditProfile(props) {
         return;
       }
       if (user.phone == '') {
+        setisError(true);
+        setisPhoneError(true);
+      } else if (user.phone.length < 9) {
+        setisError(true);
+        setisPhoneError(true);
+      } else if (
+        !user.phone.match(
+          /^(([1-9]{2,4})[ \\-]*)*?[1-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+        )
+      ) {
         setisError(true);
         setisPhoneError(true);
       } else {
@@ -198,16 +210,21 @@ function EditProfile(props) {
           </FormControl>
           <FormControl isInvalid={isPhoneError} mb={3}>
             <FormLabel fontSize={'sm'}>Nomor Handphone :</FormLabel>
-            <Input
-              name="phone"
-              type="number"
-              value={phone}
-              variant="filled"
-              onChange={onHandleChange}
-            />
+            <InputGroup>
+              <InputLeftAddon>+62</InputLeftAddon>
+              <Input
+                name="phone"
+                type="number"
+                value={phone}
+                variant="filled"
+                onChange={onHandleChange}
+              />
+            </InputGroup>
             {isPhoneError && (
               <FormErrorMessage fontSize={'xs'}>
-                Nomor handphone tidak boleh kosong
+                {user.phone == ''
+                  ? 'Nomor hanphone tidak boleh kosong'
+                  : 'Panjang minimal adalah 9 dan tidak boleh diawal dengan 0'}
               </FormErrorMessage>
             )}
           </FormControl>

@@ -35,7 +35,6 @@ export default function AddProductStock(props) {
       setDisabled(true);
       const session = await getSession();
       const { accessToken } = session.user;
-      console.log(updateStock);
 
       const config = {
         headers: { Authorization: `Bearer ${accessToken}` },
@@ -69,7 +68,15 @@ export default function AddProductStock(props) {
       fetchProduct();
       setDisabled(false);
     } catch (error) {
-      console.log;
+      toast({
+        description: error.response.data.message,
+        position: 'top',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    } finally {
+      setDisabled(false);
     }
   };
 

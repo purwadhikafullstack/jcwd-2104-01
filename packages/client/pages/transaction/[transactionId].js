@@ -1,26 +1,15 @@
-import {
-  Alert,
-  Box,
-  useToast,
-  Button,
-  Flex,
-  Stack,
-  Link,
-  Select,
-} from '@chakra-ui/react';
+import { Box, useToast, Button, Flex, Stack, Link } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../src/config/api';
 import { getSession, useSession } from 'next-auth/react';
 import Navbar from '../../components/Navbar';
 import { useRouter } from 'next/router';
 import ListPTransaction from '../../components/CardTransaction/ListPTransaction';
-import AdminListPTrans from '../../components/CardTransaction/AdminListPTrans';
-import NextLink from 'next/link';
 
 function Transaction(props) {
   const { data: session } = useSession();
   const { getTransactData } = props.transaction.data;
-  // console.log(getTransactData);
+
   const toast = useToast();
 
   const [transactionList, setTransactionList] = useState([]);
@@ -28,7 +17,7 @@ function Transaction(props) {
   const [statusTrans, setStatusTrans] = useState([]);
 
   const router = useRouter();
-  // console.log(transactionList);
+
   let status;
   getTransactData.forEach((x, i) => {
     status = x.transaction.transactionStatus;
@@ -44,14 +33,14 @@ function Transaction(props) {
     };
     try {
       const { transactionId } = router.query;
-      // console.log(transactionId);
+
       const cancel = await axiosInstance.post(
         `/transactions/cancelTransaction/${transactionId}?transactionId=${transactionId}`,
         {},
         config,
       );
       fetchTransactionList();
-      // console.log(cancel);
+
       if (status == 'Dibatalkan') {
         return toast({
           title: 'Anda perlu memasukan alamat terlebih dahulu',
@@ -72,14 +61,13 @@ function Transaction(props) {
       const updateStatus = await axiosInstance.post(
         `/transactions/confirmTransaction/${transactionId}?transactionId=${transactionId}`,
       );
-      // console.log(updateStatus.data.data.updatedTransaction);
+
       fetchTransactionList();
     } catch (error) {
       console.log(error);
     }
   };
 
-  // console.log(router.query.transactionId);
   useEffect(() => {
     fetchTransactionList();
   }, []);
@@ -108,18 +96,17 @@ function Transaction(props) {
   const fetchTransactionListByAdmin = async () => {
     try {
       const { transactionId } = router.query;
-      // console.log(transactionId);
 
       const get = await axiosInstance.get(
         `/transactions/dataTransactionByAdmin?${transactionId}`,
       );
-      // console.log(get.data.data.getTransactData);
+
       setTransactionListAdmin(get.data.data.getTransactData);
     } catch (error) {
       console.log(error);
     }
   };
-  // console.log(transactionList);
+
   const renderListTransaction = () => {
     return (
       <ListPTransaction
@@ -137,8 +124,6 @@ function Transaction(props) {
         <div>
           <Box
             display={['block', 'block', 'block']}
-            // //   mx={[5, 0, 235]}
-            // w={['40%', '40%', '40%']}
             mb={['100px', '200px', '59px']}
             justifyContent="center"
             mt="66px"
@@ -177,8 +162,6 @@ function Transaction(props) {
           <Navbar session={session} user={props.user} />
           <Box
             display={['block', 'block', 'block']}
-            // //   mx={[5, 0, 235]}
-            // w={['40%', '40%', '40%']}
             mb={['100px', '200px', '59px']}
             justifyContent="center"
             mt="66px"
@@ -198,7 +181,6 @@ function Transaction(props) {
                 mt="2rem"
                 p={20}
                 justifyContent={'center'}
-                // width={'100%'}
               >
                 {status == 'Dikirim' ? (
                   <Button
@@ -224,7 +206,6 @@ function Transaction(props) {
                     size={'xs'}
                     colorScheme={'twitter'}
                     onClick={CancelOrder}
-                    // isDisabled={status !== buttDis1 }
                   >
                     Cancel Order
                   </Button>
@@ -233,7 +214,6 @@ function Transaction(props) {
                     size={'xs'}
                     colorScheme={'twitter'}
                     onClick={CancelOrder}
-                    // isDisabled={status !== buttDis2}
                   >
                     Cancel Order
                   </Button>

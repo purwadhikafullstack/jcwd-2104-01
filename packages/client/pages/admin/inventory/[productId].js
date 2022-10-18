@@ -144,12 +144,10 @@ export default function DetailStock(props) {
   };
 
   const onClickOrder = (e) => {
-    // console.log(e.target.value);
     let splitting = e.target.value.split(' ');
-    // console.log(splitting);
+
     setSorting(splitting[0]);
     setOrder(splitting[1]);
-    // setSorting(e.target.value);
   };
 
   const onHandleChange = (event) => {
@@ -169,8 +167,7 @@ export default function DetailStock(props) {
       let tomorrows = setTimeOut.getDate();
       let sekarang = new Date();
       let sekarangs = sekarang.getDate();
-      console.log(`ini todays : ${todays}`);
-      console.log(`ini tomorows : ${tomorrows}`);
+
       return (
         <Tr key={history.historyId}>
           <Td pl="3.7%" fontSize={'15px'} borderRight={'1px'}>
@@ -245,8 +242,7 @@ export default function DetailStock(props) {
       let tomorrows = setTimeOut.getDate();
       let sekarang = new Date();
       let sekarangs = sekarang.getDate();
-      console.log(`ini todays : ${todays}`);
-      console.log(`ini tomorows : ${tomorrows}`);
+
       return (
         <Tr key={history.historyId}>
           <Td pl="3.7%" fontSize={'15px'} borderRight={'1px'}>
@@ -323,12 +319,6 @@ export default function DetailStock(props) {
                   />
                 </Link>
               </NextLink>
-              {/* <Image
-                width={'10px'}
-                height="20px"
-                src="/leftArrow.svg"
-                alt="arrow icon"
-              /> */}
               <Text
                 fontWeight={700}
                 fontSize="20px"
@@ -390,6 +380,7 @@ export default function DetailStock(props) {
                   border={'1px'}
                   borderRadius="10px"
                   mx={'3%'}
+                  mb="4%"
                 >
                   <Center>
                     <Table>
@@ -399,7 +390,6 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="5.6%"
                           >
                             Date
                           </Th>
@@ -407,7 +397,6 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="9%"
                           >
                             Product
                           </Th>
@@ -415,7 +404,6 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="2.5%"
                           >
                             Unit
                           </Th>
@@ -423,7 +411,6 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="2.9%"
                           >
                             Quantity
                           </Th>
@@ -431,14 +418,12 @@ export default function DetailStock(props) {
                             color="white"
                             fontSize={'15px'}
                             borderRight={'1px'}
-                            // px="8.6%"
                           >
                             Type
                           </Th>
                           <Th
                             color="white"
                             fontSize={'15px'}
-                            // px="2.2%"
                             borderRight={'1px'}
                           >
                             Status

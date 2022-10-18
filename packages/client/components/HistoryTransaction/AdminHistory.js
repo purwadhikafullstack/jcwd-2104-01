@@ -13,7 +13,7 @@ import {
   Link,
   Image,
 } from '@chakra-ui/react';
-// import Image from 'next/image';
+
 import { api_origin } from '../../constraint';
 import React, { useState, useEffect } from 'react';
 import axiosInstance from '../../src/config/api';
@@ -21,8 +21,6 @@ import { DeleteIcon, AddIcon, WarningIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
 const AdminTransHistory = ({ data, selected }) => {
-  // console.log(data);
-
   return (
     <div>
       <HStack
@@ -45,11 +43,15 @@ const AdminTransHistory = ({ data, selected }) => {
         <Box w="180px">
           Shiping Price: Rp. {data.biaya.toLocaleString('id')}
         </Box>
-        <Link href={`/transaction/${data.transactionId}`}>
-          <Button colorScheme={'twitter'} variant="link">
-            Lihat Pesanan
-          </Button>
-        </Link>
+        {data.transactionStatus == 'Menunggu Konfirmasi Resep' ? null : (
+          <div>
+            <Link href={`/transaction/${data.transactionId}`}>
+              <Button colorScheme={'twitter'} variant="link">
+                Lihat Pesanan
+              </Button>
+            </Link>
+          </div>
+        )}
       </HStack>
     </div>
   );
