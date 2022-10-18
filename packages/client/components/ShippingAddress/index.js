@@ -21,7 +21,15 @@ import { getSession } from 'next-auth/react';
 import RenderAddress from '../RenderAddress';
 
 function ShippingAddress(props) {
-  const { isOpen, onClose, userAddresses, fetchUserAddresses } = props;
+  const {
+    isOpen,
+    onClose,
+    userAddresses,
+    fetchUserAddresses,
+    setSelectedAddress,
+    setSelectedShipper,
+    setSelectedShippingCost,
+  } = props;
   const [modalEdit, setModalEdit] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
   // const [currentAddress, setCurrentAddress] = useState();
@@ -65,6 +73,11 @@ function ShippingAddress(props) {
         address={address}
         index={index}
         fetchUserAddresses={fetchUserAddresses}
+        onUpdateisMain={onUpdateisMain}
+        setSelectedAddress={setSelectedAddress}
+        setSelectedShipper={setSelectedShipper}
+        setSelectedShippingCost={setSelectedShippingCost}
+        onClose={onClose}
       />
     ));
   };

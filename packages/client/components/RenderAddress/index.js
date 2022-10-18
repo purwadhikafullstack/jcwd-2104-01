@@ -1,9 +1,19 @@
-import { Box, Button, HStack, Text } from '@chakra-ui/react';
+import { Box, Button, HStack, Text, useToast } from '@chakra-ui/react';
 import { useState } from 'react';
 
 import EditAddress from '../EditAddress';
 
-export default function RenderAddress({ address, index, fetchUserAddresses }) {
+export default function RenderAddress({
+  address,
+  index,
+  fetchUserAddresses,
+  onUpdateisMain,
+  setSelectedAddress,
+  setSelectedShippingCost,
+  setSelectedShipper,
+  onClose,
+}) {
+  const toast = useToast();
   const [modalEdit, setModalEdit] = useState(false);
   return (
     <Box
