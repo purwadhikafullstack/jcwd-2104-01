@@ -109,6 +109,7 @@ export default function Profile(props) {
   const renderAddress = () => {
     return userAddresses.map((address, index) => (
       <RenderAddressProfile
+        key={address.addressId}
         address={address}
         index={index}
         onUpdateisMain={onUpdateisMain}
