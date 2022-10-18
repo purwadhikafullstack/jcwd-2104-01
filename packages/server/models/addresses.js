@@ -54,12 +54,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING(5),
         allowNull: true,
       },
+      deletedAt: {
+        type: DataTypes.DATE,
+        allowNull: true,
+      },
     },
     {
       sequelize,
       modelName: 'Address',
       tableName: 'addresses',
-      // paranoid: true,
+      paranoid: true,
     },
   );
   return Address;
