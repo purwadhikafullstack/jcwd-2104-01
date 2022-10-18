@@ -72,7 +72,7 @@ export default function EditProduct(props) {
         quantity: body.detailProduct.quantity,
         categoryId: body.categoryId,
       };
-      if (body.productImage) {
+      if (body.productImage.name) {
         const gambar = body.productImage;
         const data = new FormData();
         const fileName = Date.now() + gambar.name;
@@ -208,6 +208,7 @@ export default function EditProduct(props) {
               placeholder="Pilih Kategori"
               variant="filled"
               onChange={onHandleChange}
+              // value={products.Categories[0].category}
             >
               {renderCategory()}
             </Select>
@@ -227,6 +228,7 @@ export default function EditProduct(props) {
               placeholder="Pilih Kemasan"
               variant="filled"
               onChange={onHandleChange}
+              value={product.unit}
             >
               <option value="botol">Botol</option>
               <option value="strip">Strip</option>
@@ -248,6 +250,7 @@ export default function EditProduct(props) {
               placeholder="Pilih Bentuk Obat"
               variant="filled"
               onChange={onHandleChange}
+              value={product.satuanUnit}
             >
               <option value="tablet">Tablet</option>
               <option value="kapsul">Kapsul</option>
