@@ -70,6 +70,7 @@ function ShippingAddress(props) {
   const renderAddress = () => {
     return userAddresses.map((address, index) => (
       <RenderAddress
+        key={address.addressId}
         address={address}
         index={index}
         fetchUserAddresses={fetchUserAddresses}
