@@ -41,7 +41,7 @@ const deleteProduct = async (req, res, next) => {
 
     const paths = postPath + dataValues.productImage;
 
-    if (dataValues.productImage.split('/')[3] != 'default-product.png') {
+    if (dataValues.productImage.split('/')[3] != 'product-default.png') {
       fs.unlink(paths, (err) => {
         if (err) {
           console.error(err);
