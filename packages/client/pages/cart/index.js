@@ -39,6 +39,7 @@ function Cart(props) {
   const [selectedAddress, setSelectedAddress] = useState();
   const [selectedShipper, setSelectedShipper] = useState();
   const [selectedShippingCost, setSelectedShippingCost] = useState();
+  const [currentAddress, setCurrentAddress] = useState();
 
   let name = `${user.first_name} ${user.last_name}`;
   const recipient = name.toUpperCase();
@@ -85,6 +86,7 @@ function Cart(props) {
         config,
       );
       setUserAddresses(getUserAddresses.data.data);
+      setCurrentAddress(getUserAddresses.data.data[0].address);
     } catch (error) {
       console.log(error);
     }
@@ -340,6 +342,7 @@ function Cart(props) {
                       setSelectedShipper={setSelectedShipper}
                       setSelectedShippingCost={setSelectedShippingCost}
                       fetchUserAddresses={fetchUserAddresses}
+                      currentAddress={currentAddress}
                     />
                   </Button>
 

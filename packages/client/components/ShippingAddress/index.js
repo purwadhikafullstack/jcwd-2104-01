@@ -18,26 +18,20 @@ import axiosInstance from '../../src/config/api';
 import EditAddress from '../../components/EditAddress';
 import AddAddress from '../../components/AddAddress';
 import { getSession } from 'next-auth/react';
+import RenderAddress from '../RenderAddress';
 
 function ShippingAddress(props) {
-  const {
-    isOpen,
-    onClose,
-    setSelectedAddress,
-    userAddresses,
-    fetchUserAddresses,
-    setSelectedShippingCost,
-    setSelectedShipper,
-  } = props;
+  const { isOpen, onClose, userAddresses, fetchUserAddresses } = props;
   const [modalEdit, setModalEdit] = useState(false);
   const [modalAdd, setModalAdd] = useState(false);
-  const [currentAddress, setCurrentAddress] = useState();
+  // const [currentAddress, setCurrentAddress] = useState();
+  // console.log(currentAddress);
 
   const toast = useToast();
 
-  useEffect(() => {
-    setCurrentAddress(userAddresses[0]);
-  }, []);
+  // useEffect(() => {
+  //   setCurrentAddress(userAddresses[0]);
+  // }, []);
 
   const onUpdateisMain = async (addressId) => {
     const session = await getSession();
@@ -67,99 +61,11 @@ function ShippingAddress(props) {
 
   const renderAddress = () => {
     return userAddresses.map((address, index) => (
-      <Box
-        my="2"
-        mx="2"
-        border="2px"
-        borderColor="gray.300"
-        borderRadius="md"
-        width="97%"
-        key={address.addressId}
-      >
-        <HStack py={1}>
-          <Box width="full" align="start">
-            {address.isMain == 1 && (
-              <Text
-                ms="2"
-                fontFamily="inherit"
-                color="red"
-                fontSize={{ base: 'sm', md: 'sm' }}
-              >
-                Alamat Utama
-              </Text>
-            )}
-            <Text
-              marginInline={2}
-              fontSize={{ base: 'md', md: 'md' }}
-              fontWeight="medium"
-              lineHeight={'6'}
-            >
-              {address.address}
-            </Text>
-            <Text
-              marginInline={2}
-              fontSize={{ base: 'md', md: 'md' }}
-              fontWeight="medium"
-              lineHeight={'6'}
-            >
-              {address.city_name}, {address.province}
-            </Text>
-            <HStack>
-              <Button
-                variant="ghost"
-                size="xs"
-                colorScheme={'twitter'}
-                onClick={() => {
-                  setModalEdit(true);
-                  setCurrentAddress(userAddresses[index]);
-                }}
-              >
-                Ubah Alamat
-                <EditAddress
-                  isOpen={modalEdit}
-                  onClose={() => setModalEdit(false)}
-                  fetchUserAddresses={fetchUserAddresses}
-                  addressId={currentAddress?.addressId}
-                />
-              </Button>
-              {address.isMain == 0 && (
-                <Button
-                  colorScheme={'twitter'}
-                  variant="ghost"
-                  size="xs"
-                  onClick={() => {
-                    onUpdateisMain(address.addressId);
-                  }}
-                >
-                  <Text size="xs">Jadikan Alamat Utama</Text>
-                </Button>
-              )}
-            </HStack>
-          </Box>
-          <Box pr={2}>
-            <Button
-              value={address}
-              colorScheme="twitter"
-              size="sm"
-              onClick={() => {
-                setSelectedAddress(address);
-                setSelectedShipper();
-                setSelectedShippingCost();
-                toast({
-                  description: 'Berhasil Memilih Alamat Pengiriman',
-                  position: 'top',
-                  status: 'success',
-                  duration: 3000,
-                  isClosable: true,
-                });
-                onClose();
-              }}
-            >
-              Pilih Alamat
-            </Button>
-          </Box>
-        </HStack>
-      </Box>
+      <RenderAddress
+        address={address}
+        index={index}
+        fetchUserAddresses={fetchUserAddresses}
+      />
     ));
   };
   return (

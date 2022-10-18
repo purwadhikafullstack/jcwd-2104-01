@@ -35,6 +35,7 @@ function EditAddress(props) {
   const [disabled, setDisabled] = useState(false);
   const [currentProvince, setCurrentProvince] = useState(province_name);
   const [currentCity, setCurrentCity] = useState(city);
+  console.log(address);
 
   const toast = useToast();
 

@@ -44,6 +44,7 @@ export default function Profile(props) {
         config,
       );
       setUserAddresses(getUserAddresses.data.data);
+      setCurrentAddress(getUserAddresses.data.data[0].address);
     } catch (error) {
       console.log(error);
     }
