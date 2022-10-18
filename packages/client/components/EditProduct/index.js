@@ -227,6 +227,7 @@ export default function EditProduct(props) {
               placeholder="Pilih Kemasan"
               variant="filled"
               onChange={onHandleChange}
+              value={product.unit}
             >
               <option value="botol">Botol</option>
               <option value="strip">Strip</option>
@@ -248,6 +249,7 @@ export default function EditProduct(props) {
               placeholder="Pilih Bentuk Obat"
               variant="filled"
               onChange={onHandleChange}
+              value={product.satuanUnit}
             >
               <option value="tablet">Tablet</option>
               <option value="kapsul">Kapsul</option>
