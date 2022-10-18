@@ -177,12 +177,12 @@ export default function Laporan(props) {
     {
       Header: 'Harga Satuan',
       accessor: 'product.price',
-      Cell: (props) => <div>Rp. {props.value.toLocaleString('id')} </div>,
+      Cell: (props) => <div>Rp. {props?.value?.toLocaleString('id')} </div>,
     },
     {
       Header: 'Nilai Jual',
       accessor: 'totalPrice',
-      Cell: (props) => <div>Rp. {props.value.toLocaleString('id')} </div>,
+      Cell: (props) => <div>Rp. {props?.value?.toLocaleString('id')} </div>,
     },
   ];
   const columns1 = React.useMemo(coloumFunction, []);

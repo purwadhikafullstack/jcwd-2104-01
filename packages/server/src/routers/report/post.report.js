@@ -214,17 +214,17 @@ const SalesItem = async (req, res, next) => {
   try {
     if (timeReport === 'Mingguan') {
       [results, metadata] = await logHistory.sequelize.query(
-        'SELECT WEEK(createdAt) as `week`, sum(`quantity`) AS `sum_quantity` FROM `logHistories` AS `Transaction_items` GROUP BY WEEK(createdAt) ORDER BY WEEK(createdAt) ASC',
+        'SELECT WEEK(createdAt) as `week`, sum(`quantity`) AS `sum_quantity` FROM `logHistories` AS `Transaction_items` WHERE status = "out" GROUP BY WEEK(createdAt) ORDER BY WEEK(createdAt) ASC',
       );
     } else if (timeReport === 'Bulanan') {
       [results, metadata] = await logHistory.sequelize.query(
         'SELECT createdAt as `month`, sum(`quantity`) AS `sum_quantity` FROM `logHistories` AS `Transaction_items` WHERE YEAR (createdAt) = ' +
           moment().format('YYYY') +
-          ' GROUP BY MONTH(createdAt) ORDER BY MONTH(createdAt) ASC',
+          ' && status = "out" GROUP BY MONTH(createdAt) ORDER BY MONTH(createdAt) ASC',
       );
     } else if (timeReport === 'Tahunan') {
       [results, metadata] = await logHistory.sequelize.query(
-        'SELECT createdAt as `year`, sum(`quantity`) AS `sum_quantity` FROM `logHistories` AS `Transaction_items` GROUP BY YEAR(createdAt) ORDER BY YEAR(createdAt) ASC',
+        'SELECT createdAt as `year`, sum(`quantity`) AS `sum_quantity` FROM `logHistories` AS `Transaction_items` WHERE status = "out" GROUP BY YEAR(createdAt) ORDER BY YEAR(createdAt) ASC',
       );
     }
     let data = { results };
@@ -247,19 +247,19 @@ const ProfitReport = async (req, res, next) => {
   try {
     if (timeReport === 'Mingguan') {
       const [resultsSaleTotal, metadata] = await logHistory.sequelize.query(
-        'SELECT WEEK(createdAt) as `week`, sum(totalPrice) AS `sum` FROM `logHistories` AS `Total` GROUP BY WEEK(createdAt) ORDER BY WEEK(createdAt) ASC',
+        'SELECT WEEK(createdAt) as `week`, sum(totalPrice) AS `sum` FROM `logHistories` AS `Total` WHERE status = "out" GROUP BY WEEK(createdAt) ORDER BY WEEK(createdAt) ASC',
       );
       SaleTotal = resultsSaleTotal;
     } else if (timeReport === 'Bulanan') {
       const [resultsSaleTotal, metadata] = await logHistory.sequelize.query(
-        'SELECT createdAt as `month`, sum(totalPrice) AS `sum` FROM `logHistories` AS `Total` WHERE YEAR (createdAt) = ' +
+        'SELECT createdAt as `month`, sum(totalPrice) AS `sum` FROM `logHistories` AS `Total` WHERE  YEAR (createdAt) = ' +
           moment().format('YYYY') +
-          ' GROUP BY MONTH(createdAt) ORDER BY MONTH(createdAt) ASC',
+          ' && status = "out" GROUP BY MONTH(createdAt) ORDER BY MONTH(createdAt) ASC',
       );
       SaleTotal = resultsSaleTotal;
     } else if (timeReport === 'Tahunan') {
       const [resultsSaleTotal, metadata] = await logHistory.sequelize.query(
-        'SELECT createdAt as `year`, sum(totalPrice) AS `sum` FROM `logHistories` AS `Total` GROUP BY YEAR(createdAt) ORDER BY YEAR(createdAt) ASC',
+        'SELECT createdAt as `year`, sum(totalPrice) AS `sum` FROM `logHistories` AS `Total` WHERE status = "out" GROUP BY YEAR(createdAt) ORDER BY YEAR(createdAt) ASC',
       );
       SaleTotal = resultsSaleTotal;
     }
