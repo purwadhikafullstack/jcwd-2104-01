@@ -119,7 +119,7 @@ export default function ProductDetail({ product, user }) {
           <Text
             fontSize={{ base: 'xl', md: '2xl' }}
             fontWeight="medium"
-          >{`Rp. ${product.price.toLocaleString('id')}`}</Text>
+          >{`Rp. ${product.price?.toLocaleString('id')}`}</Text>
           {product.stock != 0 ? (
             <Button
               onClick={addToCart}

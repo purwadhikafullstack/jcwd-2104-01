@@ -39,6 +39,7 @@ const createTransaction = async (req, res, next) => {
             'stock',
             'desc',
           ],
+          paranoid: false,
         },
       ],
     });
@@ -70,6 +71,7 @@ const createTransaction = async (req, res, next) => {
             where: {
               productId: data.dataValues.productId,
             },
+            paranoid: false,
           });
           return findExistingProduct.dataValues;
         } catch (error) {
@@ -98,6 +100,7 @@ const createTransaction = async (req, res, next) => {
           );
           const updateProduct = await product.findOne({
             where: { productId: data.dataValues.productId },
+            paranoid: false,
           });
 
           await product.update(
@@ -122,6 +125,7 @@ const createTransaction = async (req, res, next) => {
     findCart.map(async (data) => {
       const updateProduct = await product.findOne({
         where: { productId: data.dataValues.productId },
+        paranoid: false,
       });
 
       await product.update(
@@ -221,6 +225,7 @@ const CancelTransaction = async (req, res, next) => {
                 'stock',
                 'desc',
               ],
+              paranoid: false,
             },
             {
               model: transaction,
@@ -239,9 +244,12 @@ const CancelTransaction = async (req, res, next) => {
           ],
         });
         getDTData.map(async (data) => {
-          const updateProduct = await product.findOne({
-            where: { productId: data.dataValues.productId },
-          });
+          const updateProduct = await product.findOne(
+            {
+              where: { productId: data.dataValues.productId },
+            },
+            { paranoid: false },
+          );
           await product.update(
             {
               stock: updateProduct.dataValues.stock + data.dataValues.quantity,

@@ -69,7 +69,7 @@ export default function AdminProduct(props) {
         </Box>
         <Flex direction="column">
           <Text>{props.product.productName}</Text>
-          <Text>Rp. {props.product.price.toLocaleString('id')}</Text>
+          <Text>Rp. {props.product?.price?.toLocaleString('id')}</Text>
           <Text>{`${props.product.unit} - stock ${props.product.stock}`}</Text>
           {/* <Button
             cursor="pointer"

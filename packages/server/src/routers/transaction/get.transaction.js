@@ -121,6 +121,7 @@ const getTransactionUser = async (req, res, next) => {
             'stock',
             'desc',
           ],
+          paranoid: false,
         },
         {
           model: transaction,
@@ -172,6 +173,7 @@ const getTransactionUserByAdmin = async (req, res, next) => {
             'stock',
             'desc',
           ],
+          paranoid: false,
         },
         {
           model: transaction,

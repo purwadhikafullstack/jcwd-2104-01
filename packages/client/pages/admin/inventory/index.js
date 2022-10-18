@@ -210,7 +210,6 @@ export default function Inventory(props) {
                 <Select
                   name="category"
                   value={categories}
-                  placeholder="Semua Kategori"
                   onChange={onSelectChange}
                   w="fit-content"
                 >

@@ -26,6 +26,7 @@ const getCartUser = async (req, res, next) => {
             'stock',
             'desc',
           ],
+          paranoid: false,
         },
       ],
     });
