@@ -256,11 +256,13 @@ export default function AddProductPrescription(props) {
                           {renderProductList()}
                         </Select>
                         <Input
+                          required
                           type="number"
                           placeholder="masukkan quantity"
                           name="quantity"
                           marginInline="6"
                           width="50%"
+                          min={1}
                           max={max}
                           value={quantity}
                           onChange={(e) => setQuantity(e.target.value)}
