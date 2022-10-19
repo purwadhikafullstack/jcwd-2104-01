@@ -300,7 +300,7 @@ export default function EditProduct(props) {
             )}
           </FormControl>
           <FormControl isInvalid={isCategoryError} mb={3}>
-            <FormLabel fontSize={'sm'}>Harga :</FormLabel>
+            <FormLabel fontSize={'sm'}>Deskripsi :</FormLabel>
             <Textarea
               name="desc"
               type="text"

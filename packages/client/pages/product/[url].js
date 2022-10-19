@@ -97,7 +97,7 @@ export default function ProductDetail({ product, user }) {
         >
           <Image
             src={api_origin + product.productImage}
-            h="20vh"
+            h="40vh"
             w={{ base: '50vw', md: '20vw' }}
             alt="gambar product"
           />
@@ -119,7 +119,7 @@ export default function ProductDetail({ product, user }) {
           <Text
             fontSize={{ base: 'xl', md: '2xl' }}
             fontWeight="medium"
-          >{`Rp. ${product.price.toLocaleString('id')}`}</Text>
+          >{`Rp. ${product.price?.toLocaleString('id')}`}</Text>
           {product.stock != 0 ? (
             <Button
               onClick={addToCart}

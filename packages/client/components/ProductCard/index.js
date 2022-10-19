@@ -75,7 +75,7 @@ export default function ProductCard(props) {
           {`${props.product.unit} - stock ${props.product.stock}`}
         </Text>
         <Text mx="4" fontSize={['xs', 'sm']} lineHeight={5} fontWeight="medium">
-          Rp. {props.product.price.toLocaleString('id')}
+          Rp. {props?.product?.price?.toLocaleString('id')}
         </Text>
       </Box>
       {props.product.stock != 0 ? (

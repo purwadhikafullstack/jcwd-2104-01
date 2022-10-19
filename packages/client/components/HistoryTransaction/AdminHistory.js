@@ -41,7 +41,7 @@ const AdminTransHistory = ({ data, selected }) => {
           {data?.total?.toLocaleString('id') || 'Menunggu Proses Admin'}
         </Box>
         <Box w="180px">
-          Shiping Price: Rp. {data.biaya.toLocaleString('id')}
+          Shiping Price: Rp. {data?.biaya?.toLocaleString('id')}
         </Box>
         {data.transactionStatus == 'Menunggu Konfirmasi Resep' ? null : (
           <div>

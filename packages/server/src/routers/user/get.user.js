@@ -121,7 +121,7 @@ const verifyUserController = async (req, res, next) => {
           <i class="checkmark">✓</i>
         </div>
           <h1>BERHASIL !</h1> 
-          <p>Akun anda telah terverifikasi<br/> Klik <a href="http://localhost:3000">di sini</a> untuk menuju ke beranda</p>
+          <p>Akun anda telah terverifikasi<br/> Klik <a href="https://jcwd210401.purwadhikabootcamp.com/">di sini</a> untuk menuju ke beranda</p>
         </div>
       </body>
   </html>`);

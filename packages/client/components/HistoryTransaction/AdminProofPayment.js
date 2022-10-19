@@ -69,7 +69,7 @@ const AdminProofConfirm = ({ data, fetchTransaction }) => {
           {data?.total?.toLocaleString('id') || 'Menunggu Proses Admin'}
         </Box>
         <Box w="100px">
-          Shiping Price: Rp. {data.biaya.toLocaleString('id')}
+          Shiping Price: Rp. {data?.biaya?.toLocaleString('id')}
         </Box>
         <VStack>
           <Link href={`/transaction/${data.transactionId}`}>

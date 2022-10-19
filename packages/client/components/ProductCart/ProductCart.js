@@ -199,7 +199,7 @@ const Cartlist = ({
       >
         <Box pl="10px">
           <Text variant="subtitle-bold">Total</Text>
-          <Text variant="subtitle-bold">Rp. {price.toLocaleString('id')}</Text>
+          <Text variant="subtitle-bold">Rp. {price?.toLocaleString('id')}</Text>
         </Box>
         <Button width="60%" variant="outline" colorScheme="twitter">
           Bayar
