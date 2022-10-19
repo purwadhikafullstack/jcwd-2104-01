@@ -77,14 +77,17 @@ export default function AdminProduct(props) {
           >
             Detail
           </Button> */}
-          <Text
+          <Button
+            w="fit-content"
             cursor="pointer"
+            variant="link"
+            colorScheme="twitter"
             onClick={() =>
               router.push(`/admin/inventory/${props.product.productId}`)
             }
           >
-            Detail
-          </Text>
+            Stock Detail
+          </Button>
         </Flex>
         <Spacer />
         <Flex w="20%" justifyContent="space-evenly" alignItems={'center'}>
